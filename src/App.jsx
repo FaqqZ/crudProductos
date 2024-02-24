@@ -1,10 +1,31 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
+import Navbar from "./Components/Navbar";
+import Foot from "./Components/Foot"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Components/pages/home";
+import Admin from "./Components/pages/admin";
+import AcercaDeNosotros from "./Components/pages/acercaDeNosotros";
 function App() {
-  return (
+  return (  
     <>
-      <div className="bg-dark">
-        <h1>Hola Mundo</h1>
-      </div>
+        <BrowserRouter>
+      <header>
+        <Navbar />
+      </header>
+      
+      <main>
+        <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/acercaDeNosotros" element={<AcercaDeNosotros/>}/>
+        <Route path="/admin" element={<Admin/>}/>
+        </Routes>
+        
+      </main>
+      
+
+      <footer>
+        <Foot/>
+      </footer>
+      </BrowserRouter>
     </>
   );
 }
