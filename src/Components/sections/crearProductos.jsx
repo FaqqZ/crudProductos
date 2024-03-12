@@ -31,7 +31,7 @@ const crearProductos = () => {
     validateOnChange: true,
     onSubmit: async (values) => {
       console.log("Valores de formik", values);
-      const response = await fetch(`${API}  productos`, {
+      const response = await fetch(`${API}/productos`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
