@@ -2,6 +2,7 @@ import { Form, Button } from "react-bootstrap";
 import clsx from "clsx";
 import * as Yup from "yup";
 import { useFormik } from "formik";
+import Swal from "sweetalert2";
 const crearProductos = () => {
   //Propiedades para productos: TITULO - DESCRIPCIÓN - CATEGORIA - además va a tener un ID único
 
@@ -29,17 +30,39 @@ const crearProductos = () => {
     validationSchema: ProductoSchema,
     validateOnBlur: true,
     validateOnChange: true,
-    onSubmit: async (values) => {
+    onSubmit: (values) => {
       console.log("Valores de formik", values);
-      const response = await fetch(`${API}/productos`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
+      Swal.fire({
+        title: "¿Estás seguro de crear éste producto?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Guardar",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          try {
+            const response = await fetch(`${API}/productos`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(values),
+            });
+            //console.log("STATUS", response);
+            console.log(response.status);
+            if (response.status === 201) {
+              formik.resetForm();
+              Swal.fire({
+                title: "Producto creado con éxito!",
+                icon: "success",
+              });
+            }
+          } catch (error) {
+            console.log("ERROR--->", error);
+          }
+        }
       });
-      console.log("STATUS", response);
-      console.log(response.status);
     },
   });
 
@@ -110,7 +133,7 @@ const crearProductos = () => {
         <Form.Group className="mb-3" controlId="category">
           <Form.Label>Categoria</Form.Label>
           <select
-            class="form-select"
+            type="form-select"
             aria-label="Default select example"
             className={clsx("form-select", {
               "is-valid": formik.touched.category && !formik.errors.category,
