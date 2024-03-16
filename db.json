@@ -1,0 +1,16 @@
+{
+  "productos": [
+    {
+      "id": "9de6",
+      "title": "PEPSI 3L",
+      "description": "PEPSI BARATA Y GOD",
+      "category": "Bebidas"
+    },
+    {
+      "id": "f366",
+      "title": "COCA COLA",
+      "description": "3L DE GASEOSA",
+      "category": "Bebidas"
+    }
+  ]
+}
