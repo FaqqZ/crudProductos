@@ -8,9 +8,9 @@ const crearProductos = () => {
   //Propiedades para productos: TITULO - DESCRIPCIÓN - CATEGORIA - además va a tener un ID único
 
   const API = import.meta.env.VITE_API;
-//utilizamos useNavigate de React Router Dom
-const navigate=useNavigate();
-//inicio config FORMIK
+  //utilizamos useNavigate de React Router Dom
+  const navigate = useNavigate();
+  //inicio config FORMIK
   const ProductoSchema = Yup.object().shape({
     title: Yup.string()
       .min(4, "Mínimo 4 carácteres")
@@ -68,10 +68,17 @@ const navigate=useNavigate();
       });
     },
   });
-//fin formik config
+  //fin formik config
   return (
     <div className="container py-3 my-3">
-      <Button variant="danger"onClick={()=>{navigate(-1)}}>Volver al inicio</Button>
+      <Button
+        variant="danger"
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
+        Volver al inicio
+      </Button>
       <div className="text-center">
         <h2>Crear Productos</h2>
       </div>

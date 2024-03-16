@@ -11,6 +11,12 @@
       "title": "COCA COLA",
       "description": "3L DE GASEOSA",
       "category": "Bebidas"
+    },
+    {
+      "id": "ce3c",
+      "title": "PRINGLES",
+      "description": "PAPAS FRITAS",
+      "category": "Alimentos"
     }
   ]
 }
