@@ -18,12 +18,21 @@ const ProductList = () => {
 
     useEffect(() => {
         getProductos();
+
+
+        return ()=>{
+        setProductos([]);
+        }
+
+
     }, []);
 
-    return (
-        <div>
-            <h2>SOY UNA LISTA DE PRODUCTOS</h2>
 
+    return (
+        <div className="container-fluid">
+            <div className="text-center">
+            <h2>SOY UNA LISTA DE PRODUCTOS</h2>
+            </div>
             <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>

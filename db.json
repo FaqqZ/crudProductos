@@ -17,6 +17,12 @@
       "title": "PRINGLES",
       "description": "PAPAS FRITAS",
       "category": "Alimentos"
+    },
+    {
+      "id": "6875",
+      "title": "LAYS",
+      "description": "PAPAS LAY",
+      "category": "Bebidas"
     }
   ]
 }
